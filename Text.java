@@ -21,23 +21,57 @@ public class Text {
 		return input.length();
 	}
 
-	public String charsAtEvens(String input) {
-		ArrayList<Character> ch = new ArrayList<>();
+	public String charsAtEvensOrOdds(String input, boolean even) {
+		StringBuilder bildE = new StringBuilder(input.length());
+		StringBuilder bildO = new StringBuilder(input.length());
+		
 		char [] c = input.toCharArray();
 		for(int i = 0; i < c.length; i++){
 			if((i + 1) % 2 == 0){
-				ch.add(c[i]);
+				bildE.append(c[i]);
 			}
+			else
+				bildO.append(c[i]);
 		}
-		String evenChars = getString(ch);
-		return evenChars;
+		
+		if(even)
+		return bildE.toString();
+		else
+			return bildO.toString();
 	}
 
-	private String getString(ArrayList<Character> ch) {
-		StringBuilder bild = new StringBuilder(ch.size());
-		for(Character c: ch){
-			bild.append(c);
+	public int numberUpperAndLowerCase(String input, String letter) {
+		int countU = 0;
+		int countL = 0;
+		int countO = 0;
+		char [] c = input.toCharArray();
+		for(int i = 0; i < c.length; i++){
+			if(Character.isUpperCase(c[i])){
+				countU++;
+			}
+			else if(Character.isLowerCase(c[i]))
+				countL++;
+			else{
+				if(!Character.isWhitespace(c[i]))
+				countO++;
+			}
 		}
-		return bild.toString();
+		if(letter.equals("upper"))
+			return countU;
+		else if(letter.equals("lower"))
+			return countL;
+		else
+			return countO;
 	}
+
+//	public String charsAtOdd(String input) {
+//		StringBuilder bild = new StringBuilder(input.length());
+//		char [] c = input.toCharArray();
+//		for(int i = 0; i < c.length; i++){
+//			if((i + 1) % 2 != 0){
+//				bild.append(c[i]);
+//			}
+//		}
+//		return bild.toString();
+//	}
 }

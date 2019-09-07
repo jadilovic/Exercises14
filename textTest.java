@@ -28,7 +28,23 @@ public class textTest {
 
 	@Test
 	public void shouldShowAllCharactersAtEvenPositions(){
-		String ch = tx.charsAtEvens("word");
+		String ch = tx.charsAtEvensOrOdds("word", true);
 		assertEquals("od", ch);
+	}
+	
+	@Test
+	public void shouldShowAllCharactersAtOddPositions(){
+		String ch = tx.charsAtEvensOrOdds("word", false);
+		assertEquals("wr", ch);
+	}
+	
+	@Test
+	public void shoudShowNumberOfUpperCaseCharacters(){
+		int numUpperChar = tx.numberUpperAndLowerCase("WhatThat", "upper");
+		assertEquals(2, numUpperChar);
+		int numLowerChar = tx.numberUpperAndLowerCase("What! That?:", "lower");
+		assertEquals(6, numLowerChar);
+		int numOtherChar = tx.numberUpperAndLowerCase("Wh at! Th at?:", "other");
+		assertEquals(3, numOtherChar);
 	}
 }
