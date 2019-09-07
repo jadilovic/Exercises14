@@ -26,4 +26,9 @@ public class textTest {
 		assertEquals(length, 3);
 	}
 
+	@Test
+	public void shouldShowAllCharactersAtEvenPositions(){
+		String ch = tx.charsAtEvens("word");
+		assertEquals("od", ch);
+	}
 }
